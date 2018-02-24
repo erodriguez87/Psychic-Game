@@ -23,29 +23,32 @@
     var tries = 10; 
     var guesses = [];
     var guesscounter = 0;
+    var psych = alphabet[Math.floor(Math.random() * alphabet.length)];
 
     // This function is run whenever the user presses a key. it stores their guess
     document.onkeyup = function(event) {
       var userGuess = event.key;
-      // letter the user needs to guess
-      var psych = alphabet[Math.floor(Math.random() * alphabet.length)];
       tries--;
-      console.log("psych letter" + psych)
-      console.log("user guess" + userGuess)
-      console.log("tries left" + tries)
+      // letter the user needs to guess
+      
+      // console.log("psych letter" + psych)
+      // console.log("user guess" + userGuess)
+      // console.log("tries left" + tries)
 
       // This logic determines the outcome of the game (win/loss) or more tries. It also resets the counters when the tries are up.
-      if ((tries >= 1) && (userGuess === psych)) {
+      if ((tries >= 0) && (userGuess === psych)) {
         wins++;
         tries = 10;
         guesses = [];
         guesscounter = 0;
+        psych = alphabet[Math.floor(Math.random() * alphabet.length)];
       } else if (tries === 0){
         losses++;
-        console.log("you lose")
+        // console.log("you lose")
         tries = 10;
         guesses = [];
         guesscounter = 0;
+        psych = alphabet[Math.floor(Math.random() * alphabet.length)];
       } else {
         guesses[guesscounter] = userGuess
         guesscounter++
@@ -56,7 +59,7 @@
           "<h1>Psych ... </h1>" +
           "<p>Guess What letter I'm thinking of:</p>" +
           "<p>You chose: " + userGuess + "</p>" +
-          "<p>The computer chose: " + psych + "</p>" +
+          // "<p>The computer chose: " + psych + "</p>" +
           "<p>wins: " + wins + "</p>" +
           "<p>losses: " + losses + "</p>" +
           "<p>Guesses left: " + tries + "</p>" +
